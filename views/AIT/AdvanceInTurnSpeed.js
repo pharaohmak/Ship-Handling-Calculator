@@ -1,17 +1,15 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
-import { Text, Alert } from 'react-native';
-import { TextInput } from 'react-native';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
 
+/** Input any two variables to get third (all decimals round to tents) */
 
-class CalculateAnchorSwingCircle extends React.Component {
+class CalculateAdvanceInTurnSpeed extends React.Component {
    
   constructor(props) {
     super(props);
   
     this.state = {
-      firstValue: '',
+      distance: '',
       secondValue: '',
       sum: 0
     };
@@ -21,36 +19,36 @@ class CalculateAnchorSwingCircle extends React.Component {
     const { firstValue, secondValue } = this.state;
   
     this.setState({
-      sum: ((Math.round(Number(firstValue)) * 27.5) + Number(secondValue))/1852
+      sum: Number(secondValue) *  (Math.tan((Number(firstValue)/2)))
     });
     this.ButtonAlert()
   }
 
   ButtonAlert = () => {
     Alert.alert(
-      "Anchor Swing Circle ",
-      `Swing Circle ${this.state.sum.toFixed(2)} (nm)`,
+      "Vector Minutes to Waypoint ",
+      `Advance ${this.state.sum.toFixed(2)} (nm)`,
       [
         { text: "OK", onPress: () => console.log(Math.round(`${this.state.sum}`)) }
       ]
     );
 
   }
-
-
+  
   render() {
     return (
       <View>
-        <Text style={styles.text}># Of Shackles (decimal)</Text>
+        <Text style={styles.text}>Advance (nm)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.firstValue}
+          value={this.state.distance}
           onChangeText={(firstValue) => this.setState({firstValue})}
         />
-  
-        <Text style={styles.text}>Vessel LOA (meters)</Text>
+
+        <Text style={styles.text}>Speed (kts)</Text>
         <TextInput
         style={styles.input}
+
           value={this.state.secondValue}
           onChangeText={(secondValue) => this.setState({secondValue})}
         />
@@ -95,4 +93,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default CalculateAnchorSwingCircle;
+export default CalculateAdvanceInTurnSpeed;

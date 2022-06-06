@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native';
 import { Pressable } from 'react-native';
 import Header from './components/Header';
-import CalculateSpeedTimeDistance from './views/STD/Distance'
+import CalculateDistance from './views/STD/Distance';
 import CalculateSpeed from './views/STD/Speed';
 import CalculateTime from './views/STD/Time';
 import CalculateAdvanceInTurn from './views/AIT/AdvanceInTurn';
@@ -13,7 +13,6 @@ import CalculateAnchorSwingCircle from './views/AnchorSwingCircle';
 import CalculateRadiusOfTurn from './views/ROT/RadiusOfTurn';
 import CalculateRateOfTurn from './views/ROT/RateOfTurn';
 import CalculateRateOfTurnSpeed from './views/ROT/RateOfTurnSpeed';
-import CalculateAdvanceInTurnSpeed from './views/AIT/AdvanceInTurnSpeed';
 
 function HomeScreen({ navigation }) {
 
@@ -57,18 +56,16 @@ function HomeScreen({ navigation }) {
 }
 
 function RadiusOfTurn({ navigation }) {
-
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
     <CalculateRadiusOfTurn />
 
       <Button
         title="Calculate Rate of Turn"
         onPress={() => navigation.navigate('RateOfTurn')}
       />
-      <Button 
-        title="Go Home" 
-        onPress={() => navigation.navigate('Home')} />
+      <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
       
     </View>
 
@@ -76,7 +73,6 @@ function RadiusOfTurn({ navigation }) {
 }
 
 function RateOfTurn({ navigation }) {
-
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <CalculateRateOfTurn />
@@ -85,6 +81,7 @@ function RateOfTurn({ navigation }) {
         title="Calculate Speed"
         onPress={() => navigation.navigate('RateOfTurnSpeed')}
       />
+      
       <Button 
       title="Go Home" 
       onPress={() => navigation.navigate('Home')} />
@@ -115,9 +112,6 @@ function AdvanceInTurn({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <CalculateAdvanceInTurn />
-
-    <Button title="Calculate Vector Length" onPress={() => navigation.navigate('AdvanceInTurnSpeed')} />
-
       
       <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
      
@@ -125,31 +119,18 @@ function AdvanceInTurn({ navigation }) {
   );
 }
 
-function AdvanceInTurnSpeed ({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <CalculateAdvanceInTurnSpeed />
-
-    
-    <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-   
-  </View> 
-  )
-}
-
 function SpeedTimeDistance({ navigation }) {
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <CalculateSpeedTimeDistance />
-
+      <CalculateDistance />
       <Button
         title="Calculate Speed"
         onPress={() => navigation.navigate('Speed')}
       />
      
       <Button 
-      title="Go Home" 
+      title="Go to Home" 
       onPress={() => navigation.navigate('Home')} />
       
     </View>
@@ -178,15 +159,11 @@ function Time({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <CalculateTime />
       
-      
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
       <Button
         title="Calculate Speed Time Distance"
         onPress={() => navigation.navigate('SpeedTimeDistance')}
       />
-      <Button 
-        title="Go to Home" 
-        onPress={() => navigation.navigate('Home')} />
-
     </View>
   );
 }
@@ -232,12 +209,7 @@ function App() {
         <Stack.Screen 
         name="AdvanceInTurn" 
         component={AdvanceInTurn} 
-        options={{ title: 'Calculate Advance Distance'}}
-        />
-        <Stack.Screen
-        name="AdvanceInTurnSpeed"
-        component={AdvanceInTurnSpeed}
-        options={{ title: 'Calculate Vector Length to Waypoint'}}
+        options={{ title: 'Calculate Advance in Turn'}}
         />
         <Stack.Screen 
         name="SpeedTimeDistance" 

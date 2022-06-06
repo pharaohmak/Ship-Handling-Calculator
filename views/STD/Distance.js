@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Text, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
 
 /** Input any two variables to get third (all decimals round to tents) */
 
-class CalculateDistance extends React.Component {
+class CalculateSpeedTimeDistance extends React.Component {
    
   constructor(props) {
     super(props);
@@ -21,6 +21,18 @@ class CalculateDistance extends React.Component {
     this.setState({
       sum: Number(firstValue) * Number(secondValue)
     });
+    this.ButtonAlert()
+  }
+
+  ButtonAlert = () => {
+    Alert.alert(
+      "Speed Time Distance ",
+      `Distance ${this.state.sum.toFixed(2)} (nm)`,
+      [
+        { text: "OK", onPress: () => console.log(Math.round(`${this.state.sum}`)) }
+      ]
+    );
+
   }
   
   render() {
@@ -41,28 +53,44 @@ class CalculateDistance extends React.Component {
           onChangeText={(secondValue) => this.setState({secondValue})}
         />
   
-        <TouchableHighlight onPress={this.calculateSum}>
-          <Text>Calculate</Text>
+        <TouchableHighlight style={styles.button} onPress={this.calculateSum}>
+          <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
   
-        <Text>{`Distance ${this.state.sum.toFixed(2)} (nm)`}</Text>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-  
-    },
-    text: {
-      color: 'black',
-      fontSize: 16,
-    },
-    input: {
-      backgroundColor: 'grey'
-    }
-  })
+  container: {
+    flex: 1,
+    justifyContent: 'space-between'
 
-export default CalculateDistance;
+  },
+  text: {
+    color: 'black',
+    fontSize: 18,
+    padding: 10,
+    
+  },
+  input: {
+    backgroundColor: 'grey',
+    width: 300,
+    height: 35,
+    color: 'white'
+  },
+  button: {
+    padding: 18,
+    margin: 16,
+    alignItems: 'center',
+    backgroundColor: 'blue',
+    borderRadius: 50
+  },
+  buttonText: {
+    fontSize: 20,
+    color: 'white'
+  },
+})
+
+export default CalculateSpeedTimeDistance;
