@@ -1,11 +1,9 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
-import { Text } from 'react-native';
-import { TextInput } from 'react-native';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput, Text, TouchableHighlight } from 'react-native';
 
+/** Input any two variables to get third (all decimals round to tents) */
 
-class CalculateAnchorSwingCircle extends React.Component {
+class CalculateSpeed extends React.Component {
    
   constructor(props) {
     super(props);
@@ -21,23 +19,25 @@ class CalculateAnchorSwingCircle extends React.Component {
     const { firstValue, secondValue } = this.state;
   
     this.setState({
-      sum: ((Math.round(Number(firstValue)) * 27.5) + Number(secondValue))/1852
+      sum: (Number(firstValue) * Number(secondValue)) /0.955
     });
   }
   
   render() {
     return (
       <View>
-        <Text style={styles.text}># Of Shackles (decimal)</Text>
+        <Text style={styles.text}>ROT (dpm)</Text>
         <TextInput
         style={styles.input}
+
           value={this.state.firstValue}
           onChangeText={(firstValue) => this.setState({firstValue})}
         />
-  
-        <Text style={styles.text}>Vessel LOA (meters)</Text>
+
+        <Text style={styles.text}>Radius (nm)</Text>
         <TextInput
         style={styles.input}
+
           value={this.state.secondValue}
           onChangeText={(secondValue) => this.setState({secondValue})}
         />
@@ -46,24 +46,26 @@ class CalculateAnchorSwingCircle extends React.Component {
           <Text>Calculate</Text>
         </TouchableHighlight>
   
-        <Text>{`Sum ${this.state.sum.toFixed(2)}`}</Text>
+        <Text>{`Speed ${this.state.sum.toFixed(2)} (kts)`}</Text>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+    container: {
+      flex: 1,
+  
+    },
+    text: {
+      color: 'black',
+      fontSize: 16,
+    },
+    input: {
+      backgroundColor: 'grey'
+    }
+  })
 
-  },
-  text: {
-    color: 'black',
-    fontSize: 16,
-  },
-  input: {
-    backgroundColor: 'grey'
-  }
-})
 
-export default CalculateAnchorSwingCircle;
+
+export default CalculateSpeed;

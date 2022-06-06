@@ -5,14 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native';
 import { Pressable } from 'react-native';
 import Header from './components/Header';
-import CalculateRateOfTurn from './views/RateOfTurn/RateOfTurn';
-import CalculateRateOfTurnSpeed from './views/RateOfTurn/Speed';
-import CalculateRateOfTurnRadius from './views/RateOfTurn/Radius';
-import CalculateSpeedTimeDistance from './views/SpeedTieDistance/SpeedTimeDistance';
-import CalculateSpeed from './views/SpeedTieDistance/Speed';
-import CalculateTime from './views/SpeedTieDistance/Time';
+import CalculateSpeedTimeDistance from './views/STD/Distance'
 import CalculateAdvanceInTurn from './views/AdvanceInTurn';
 import CalculateAnchorSwingCircle from './views/AnchorSwingCircle';
+import CalculateRadiusOfTurn from './views/ROT/RadiusOfTurn';
+import CalculateRateOfTurn from './views/ROT/RateOfTurn';
+import CalculateSpeed from './views/ROT/Speed';
 
 function HomeScreen({ navigation }) {
 
@@ -23,7 +21,7 @@ function HomeScreen({ navigation }) {
             <View style={styles.buttonGroup}>
                 <Pressable
                     style={[styles.button, styles.buttonOpen]}
-                    onPress={() => navigation.navigate('RateOfTurn')}
+                    onPress={() => navigation.navigate('RadiusOfTurn')}
                 >
                     <Text style={styles.textStyle}>Rate of Turn</Text>
                 </Pressable>
@@ -55,55 +53,64 @@ function HomeScreen({ navigation }) {
   );
 }
 
+function RadiusOfTurn({ navigation }) {
+  return(
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+    <CalculateRadiusOfTurn />
+
+      <Button
+        title="Calculate Rate of Turn"
+        onPress={() => navigation.navigate('RateOfTurn')}
+      />
+      <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
+      
+    </View>
+
+  )
+}
 
 function RateOfTurn({ navigation }) {
-  
-  return (
+  return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <CalculateRateOfTurn />
+
       <Button
         title="Calculate Speed"
         onPress={() => navigation.navigate('Speed')}
       />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      
+      <Button 
+      title="Go Home" 
+      onPress={() => navigation.navigate('Home')} />
       
     </View>
-  );
+  )
 }
 
 function Speed({ navigation }) {
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <CalculateRateOfTurnSpeed />
+
+      <CalculateSpeed />
       <Button
-        title="Calculate Radius"
-        onPress={() => navigation.navigate('Radius')}
+        title="Calculate Radius of Turn"
+        onPress={() => navigation.navigate('RadiusOfTurn')}
       />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button
-        title="Calculate Rate Of Turn"
-        onPress={() => navigation.navigate('RateOfTurn')}
-      />
+      <Button 
+        title="Go to Home" 
+        onPress={() => navigation.navigate('Home')} />
+      
     </View>
   )
 }
 
-function Radius({ navigation }) {
-  return(
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <CalculateRateOfTurnRadius />
-      <Button
-        title="Calculate Speed"
-        onPress={() => navigation.navigate('Speed')}
-      />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button
-        title="Calculate Rate Of Turn"
-        onPress={() => navigation.navigate('RateOfTurn')}
-      />
-    </View>
-  )
-}
+
+
+
+
+
+
 
 function AdvanceInTurn({ navigation }) {
   
@@ -196,9 +203,9 @@ function App() {
         options={{ title: 'Ship Handling Calculator' }}
         />
         <Stack.Screen 
-        name="RateOfTurn" 
-        component={RateOfTurn} 
-        options={{ title: 'Calculate Rate of Turn'}}
+        name="RadiusOfTurn" 
+        component={RadiusOfTurn} 
+        options={{ title: 'Calculate Radius of Turn'}}
         />
         <Stack.Screen 
         name="Speed" 
@@ -206,9 +213,9 @@ function App() {
         options={{ title: 'Calculate Speed'}}
         />
         <Stack.Screen 
-        name="Radius" 
-        component={Radius} 
-        options={{ title: 'Calculate Radius'}}
+        name="RateOfTurn" 
+        component={RateOfTurn} 
+        options={{ title: 'Calculate Rate Of Turn'}}
         />
         <Stack.Screen 
         name="AdvanceInTurn" 

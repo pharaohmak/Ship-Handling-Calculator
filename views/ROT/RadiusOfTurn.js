@@ -1,11 +1,9 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
-import { Text } from 'react-native';
-import { TextInput } from 'react-native';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput, Text, TouchableHighlight } from 'react-native';
 
+/** Input any two variables to get third (all decimals round to tents) */
 
-class CalculateAnchorSwingCircle extends React.Component {
+class CalculateRadiusOfTurn extends React.Component {
    
   constructor(props) {
     super(props);
@@ -21,23 +19,23 @@ class CalculateAnchorSwingCircle extends React.Component {
     const { firstValue, secondValue } = this.state;
   
     this.setState({
-      sum: ((Math.round(Number(firstValue)) * 27.5) + Number(secondValue))/1852
+      sum: ((0.955) * Number(firstValue)) / Number(secondValue)
     });
   }
   
   render() {
     return (
       <View>
-        <Text style={styles.text}># Of Shackles (decimal)</Text>
+        <Text style={styles.text}>Speed (kts)</Text>
         <TextInput
-        style={styles.input}
+          style={styles.input}
           value={this.state.firstValue}
           onChangeText={(firstValue) => this.setState({firstValue})}
         />
-  
-        <Text style={styles.text}>Vessel LOA (meters)</Text>
+
+        <Text>ROT (dpm)</Text>
         <TextInput
-        style={styles.input}
+          style={styles.input}
           value={this.state.secondValue}
           onChangeText={(secondValue) => this.setState({secondValue})}
         />
@@ -46,7 +44,7 @@ class CalculateAnchorSwingCircle extends React.Component {
           <Text>Calculate</Text>
         </TouchableHighlight>
   
-        <Text>{`Sum ${this.state.sum.toFixed(2)}`}</Text>
+        <Text>{`Radius ${this.state.sum.toFixed(2)} (nm)`}</Text>
       </View>
     );
   }
@@ -66,4 +64,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CalculateAnchorSwingCircle;
+export default CalculateRadiusOfTurn;

@@ -7,19 +7,18 @@ class CalculateAdvanceInTurn extends React.Component {
         super(props);
     
         this.state = {
-        deg: '',
-        radius: '',
-        speed: '',
-        sum: 0
+        delta: 0.0,
+        radius: 0.0,
+        advanceDistance: 0.0,
+        adv: 0
         };
     }
     
       calculateSum = () => {
-        const { deg, radius, speed  } = this.state;
+        const { delta, radius,  } = this.state;
       
         this.setState({
-            sum: Number(radius) / Number(speed),
-            len: Number(deg) / Number(radius)
+            adv: Number(radius) * (Math.tan(delta / 2 ))
 
         });
       }
