@@ -9,17 +9,17 @@ class CalculateAdvanceDistance extends React.Component {
     super(props);
   
     this.state = {
-      firstValue: '',
-      secondValue: '',
-      sum: 0
+      delta: '',
+      radius: '',
+      advance: 0
     };
   }
   
   calculateSum = () => {
-    const { firstValue, secondValue } = this.state;
+    const { delta, radius } = this.state;
   
     this.setState({
-      sum: Number(secondValue) *  (Math.tan((Number(firstValue)/2)))
+      advance: Number(radius) *  (Math.tan(((Number(delta)/2))))
     });
     this.ButtonAlert()
   }
@@ -27,9 +27,9 @@ class CalculateAdvanceDistance extends React.Component {
   ButtonAlert = () => {
     Alert.alert(
       "Advance Distance in Turn ",
-      `Advance ${this.state.sum.toFixed(2)} (nm)`,
+      `Advance ${this.state.advance.toFixed(2)} (nm)`,
       [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.distance}`)) }
+        { text: "OK", onPress: () => console.log(Math.round(`${this.state.advance}`)) }
       ]
     );
 
@@ -41,16 +41,16 @@ class CalculateAdvanceDistance extends React.Component {
         <Text style={styles.text}>Degrees of Course Change (Delta)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.firstValue}
-          onChangeText={(firstValue) => this.setState({firstValue})}
+          value={this.state.delta}
+          onChangeText={(delta) => this.setState({delta})}
         />
 
         <Text style={styles.text}>Radius (Nautical Miles)</Text>
         <TextInput
         style={styles.input}
 
-          value={this.state.secondValue}
-          onChangeText={(secondValue) => this.setState({secondValue})}
+          value={this.state.radius}
+          onChangeText={(radius) => this.setState({radius})}
         />
   
         <TouchableHighlight style={styles.button} onPress={this.calculateSum}>

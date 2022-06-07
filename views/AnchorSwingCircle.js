@@ -11,17 +11,17 @@ class CalculateAnchorSwingCircle extends React.Component {
     super(props);
   
     this.state = {
-      firstValue: '',
-      secondValue: '',
-      sum: 0
+      shackles: '',
+      vessel: '',
+      asc: 0
     };
   }
   
   calculateSum = () => {
-    const { firstValue, secondValue } = this.state;
+    const { shackles, vessel } = this.state;
   
     this.setState({
-      sum: ((Math.round(Number(firstValue)) * 27.5) + Number(secondValue))/1852
+      asc: ((Math.round(Number(shackles)) * 27.5) + Number(vessel))/1852
     });
     this.ButtonAlert()
   }
@@ -29,9 +29,9 @@ class CalculateAnchorSwingCircle extends React.Component {
   ButtonAlert = () => {
     Alert.alert(
       "Anchor Swing Circle ",
-      `Swing Circle ${this.state.sum.toFixed(2)} (nm)`,
+      `Swing Circle ${this.state.asc.toFixed(2)} (nm)`,
       [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.sum}`)) }
+        { text: "OK", onPress: () => console.log(Math.round(`${this.state.asc}`)) }
       ]
     );
 
@@ -44,15 +44,15 @@ class CalculateAnchorSwingCircle extends React.Component {
         <Text style={styles.text}># Of Shackles (decimal)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.firstValue}
-          onChangeText={(firstValue) => this.setState({firstValue})}
+          value={this.state.shackles}
+          onChangeText={(shackles) => this.setState({shackles})}
         />
   
         <Text style={styles.text}>Vessel LOA (meters)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.secondValue}
-          onChangeText={(secondValue) => this.setState({secondValue})}
+          value={this.state.vessel}
+          onChangeText={(vessel) => this.setState({vessel})}
         />
   
         <TouchableHighlight style={styles.button} onPress={this.calculateSum}>

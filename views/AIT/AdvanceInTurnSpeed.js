@@ -1,35 +1,42 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
+import CalculateAdvanceDistance from './AdvanceInTurn';
 
 /** Input any two variables to get third (all decimals round to tents) */
 
 class CalculateAdvanceInTurnSpeed extends React.Component {
    
+  
+  advance = CalculateAdvanceDistance;
+
   constructor(props) {
     super(props);
   
     this.state = {
-      distance: '',
-      secondValue: '',
-      sum: 0
+      advance: {CalculateAdvanceDistance},
+      speed: '',
+      vector: 0
     };
   }
+
+  
   
   calculateSum = () => {
-    const { firstValue, secondValue } = this.state;
+    const { advance, speed } = this.state;
   
     this.setState({
-      sum: Number(secondValue) *  (Math.tan((Number(firstValue)/2)))
+      vector: Number(advance) *  (Math.tan((Number(speed)/2)))
     });
     this.ButtonAlert()
+    
   }
 
   ButtonAlert = () => {
     Alert.alert(
       "Vector Minutes to Waypoint ",
-      `Advance ${this.state.sum.toFixed(2)} (nm)`,
+      `Advance ${this.state.vector.toFixed(2)} (nm)`,
       [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.sum}`)) }
+        { text: "OK", onPress: () => console.log((`${this.state.vector }`)) }
       ]
     );
 
@@ -41,16 +48,16 @@ class CalculateAdvanceInTurnSpeed extends React.Component {
         <Text style={styles.text}>Advance (nm)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.distance}
-          onChangeText={(firstValue) => this.setState({firstValue})}
+          value={this.state.advance}
+          onChangeText={(advance) => this.setState({advance})}
         />
 
         <Text style={styles.text}>Speed (kts)</Text>
         <TextInput
         style={styles.input}
 
-          value={this.state.secondValue}
-          onChangeText={(secondValue) => this.setState({secondValue})}
+          value={this.state.speed}
+          onChangeText={(speed) => this.setState({speed})}
         />
   
         <TouchableHighlight style={styles.button} onPress={this.calculateSum}>

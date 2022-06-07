@@ -9,17 +9,17 @@ class CalculateSpeed extends React.Component {
     super(props);
   
     this.state = {
-      firstValue: '',
-      secondValue: '',
-      sum: 0
+      distance: '',
+      time: '',
+      speed: 0
     };
   }
   
   calculateSum = () => {
-    const { firstValue, secondValue } = this.state;
+    const { distance, time } = this.state;
   
     this.setState({
-      sum: Number(firstValue) / Number(secondValue)
+      speed: Number(distance) / Number(time)
     });
     this.ButtonAlert()
   }
@@ -27,9 +27,9 @@ class CalculateSpeed extends React.Component {
   ButtonAlert = () => {
     Alert.alert(
       "Speed Time Distance ",
-      `Speed ${this.state.sum.toFixed(2)} (nm)`,
+      `Speed ${this.state.speed.toFixed(2)} (nm)`,
       [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.sum}`)) }
+        { text: "OK", onPress: () => console.log(Math.round(`${this.state.speed}`)) }
       ]
     );
 
@@ -41,16 +41,16 @@ class CalculateSpeed extends React.Component {
         <Text style={styles.text}>Distance (nm)</Text>
         <TextInput
         style={styles.input}
-          value={this.state.firstValue}
-          onChangeText={(firstValue) => this.setState({firstValue})}
+          value={this.state.distance}
+          onChangeText={(distance) => this.setState({distance})}
         />
 
         <Text style={styles.text}>Time (hh.hh)</Text>
         <TextInput
         style={styles.input}
 
-          value={this.state.secondValue}
-          onChangeText={(secondValue) => this.setState({secondValue})}
+          value={this.state.time}
+          onChangeText={(time) => this.setState({time})}
         />
   
         <TouchableHighlight style={styles.button} onPress={this.calculateSum}>

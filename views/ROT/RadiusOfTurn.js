@@ -9,27 +9,27 @@ class CalculateRadiusOfTurn extends React.Component {
     super(props);
   
     this.state = {
-      firstValue: '',
-      secondValue: '',
-      sum: 0
+      speed: '',
+      rot: '',
+      radius: 0
     };
   }
   
   calculateSum = () => {
-    const { firstValue, secondValue } = this.state;
+    const { speed, rot } = this.state;
   
     this.setState({
-      sum: ((0.955) * Number(firstValue)) / Number(secondValue),
+      radius: ((0.955) * Number(speed)) / Number(rot),
     });
-    this.ButtonAlert(this.state.sum)
+    this.ButtonAlert(this.state.radius)
   }
 
   ButtonAlert = () => {
     Alert.alert(
       "Rate of Turn Radius",
-      `Radius ${this.state.sum.toFixed(2)} (nm)`,
+      `Radius ${this.state.radius.toFixed(2)} (nm)`,
       [
-        { text: "OK", onPress: () => console.log(`${this.state.sum}`) }
+        { text: "OK", onPress: () => console.log(`${this.state.radius}`) }
       ]
     );
 
@@ -42,15 +42,15 @@ class CalculateRadiusOfTurn extends React.Component {
         <Text style={styles.text}>Speed (kts)</Text>
         <TextInput
           style={styles.input}
-          value={this.state.firstValue}
-          onChangeText={(firstValue) => this.setState({firstValue})}
+          value={this.state.speed}
+          onChangeText={(speed) => this.setState({speed})}
         />
 
         <Text style={styles.text}>ROT (dpm)</Text>
         <TextInput
           style={styles.input}
-          value={this.state.secondValue}
-          onChangeText={(secondValue) => this.setState({secondValue})}
+          value={this.state.rot}
+          onChangeText={(rot) => this.setState({rot})}
         />
   
         <TouchableHighlight onPress={this.calculateSum}
