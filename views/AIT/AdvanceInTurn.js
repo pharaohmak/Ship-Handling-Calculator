@@ -1,62 +1,58 @@
-import React from 'react';
-import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, Button, TextInput,Alert } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 
-/** Input any two variables to get third (all decimals round to tents) */
+class CalculateAdvanceInTurn extends Component {
 
-class CalculateAdvanceDistance extends React.Component {
-   
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      delta: '',
-      radius: '',
-      advance: 0
-    };
+  state = {
+    advance: 0,
+    input: '',
+    radius: '',
+    delta: '',
+    calc: 0
   }
-  
-  calculateSum = () => {
-    const { delta, radius } = this.state;
-  
-    this.setState({
-      advance: Number(radius) *  (Math.tan(((Number(delta)/2))))
-    });
-    this.ButtonAlert()
+  onButtonPressed = function() { this.setState({ text:this.state.radius })}
+  _handleTextChange = radius => { this.setState({ radius }); 
+  };
+  _handleTextChange2 = delta => { this.setState({ delta }); 
+  };
+
+  calcAdvance = function() {
+    var x = parseFloat(this.state.radius);
+    var y = parseFloat(this.state.delta);
+    var calc = (x) * (Math.tan(Math.tan(y / 2)));
+    this.setState({ advance: calc})
+    
   }
 
-  ButtonAlert = () => {
-    Alert.alert(
-      "Advance Distance in Turn ",
-      `Advance ${this.state.advance.toFixed(2)} (nm)`,
-      [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.advance}`)) }
-      ]
-    );
-
-  }
   
   render() {
-    return (
-      <View>
-        <Text style={styles.text}>Degrees of Course Change (Delta)</Text>
-        <TextInput
-        style={styles.input}
-          value={this.state.delta}
-          onChangeText={(delta) => this.setState({delta})}
-        />
-
-        <Text style={styles.text}>Radius (Nautical Miles)</Text>
-        <TextInput
-        style={styles.input}
-
-          value={this.state.radius}
-          onChangeText={(radius) => this.setState({radius})}
-        />
   
-        <TouchableHighlight style={styles.button} onPress={this.calculateSum}>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Advance Distance:  {this.state.advance.toFixed(2)} (nm)
+        </Text>
+
+        <Text style={styles.text}> Radius (nm): </Text>
+        <TextInput
+          value={this.state.radius}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange}
+          style={styles.input}
+        />
+
+        <Text style={styles.text}> Delta (deg): </Text>
+        <TextInput
+          value={this.state.delta}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange2}
+          style={styles.input}
+        />
+        <TouchableHighlight onPress={this.calcAdvance.bind(this)} 
+          style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
-  
       </View>
     );
   }
@@ -65,8 +61,16 @@ class CalculateAdvanceDistance extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
   text: {
     color: 'black',
@@ -87,10 +91,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     borderRadius: 50
   },
-  buttonText: {
-    fontSize: 20,
-    color: 'white'
-  },
-})
+});
 
-export default CalculateAdvanceDistance;
+export default CalculateAdvanceInTurn;

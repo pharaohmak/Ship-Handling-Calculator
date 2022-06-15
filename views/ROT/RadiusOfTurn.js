@@ -1,63 +1,54 @@
-import React from 'react';
-import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, Button, TextInput,Alert } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 
-/** Input any two variables to get third (all decimals round to tents) */
-
-class CalculateRadiusOfTurn extends React.Component {    
-   
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      speed: '',
-      rot: '',
-      radius: 0
-    };
-  }
-  
-  calculateSum = () => {
-    const { speed, rot } = this.state;
-  
-    this.setState({
-      radius: ((0.955) * Number(speed)) / Number(rot),
-    });
-    this.ButtonAlert(this.state.radius)
+class CalculateRadiusOfTurn extends Component {
+  state = {
+    radius: 0,
+    input: '',
+    speed: '',
+    rot: '',
+    calc: 0
   }
 
-  ButtonAlert = () => {
-    Alert.alert(
-      "Rate of Turn Radius",
-      `Radius ${this.state.radius.toFixed(2)} (nm)`,
-      [
-        { text: "OK", onPress: () => console.log(`${this.state.radius}`) }
-      ]
-    );
-
+  onButtonPressed = function() { this.setState({ radius:this.state.speed })}
+  _handleTextChange = speed => { this.setState({ speed }); 
+  };
+  _handleTextChange2 = rot => { this.setState({ rot }); 
+  };
+  calcRadius = function() {
+    var x = parseFloat(this.state.speed) 
+    var y = parseFloat(this.state.rot)
+    var calc = ((0.955) * x) / y;
+    this.setState({ radius: calc})
   }
-
 
   render() {
-    return (
-      <View>
-        <Text style={styles.text}>Speed (kts)</Text>
-        <TextInput
-          style={styles.input}
-          value={this.state.speed}
-          onChangeText={(speed) => this.setState({speed})}
-        />
-
-        <Text style={styles.text}>ROT (dpm)</Text>
-        <TextInput
-          style={styles.input}
-          value={this.state.rot}
-          onChangeText={(rot) => this.setState({rot})}
-        />
   
-        <TouchableHighlight onPress={this.calculateSum}
-        style={styles.button}>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Radius:  {(this.state.radius).toFixed(2)} (nm)
+        </Text>
+
+        <Text style={styles.text}> Speed (kts): </Text>
+        <TextInput
+          value={this.state.speed}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange}
+          style={styles.input}
+        />
+        <Text style={styles.text}> Rate Of Turn (dpm): </Text>
+        <TextInput
+          value={this.state.rot}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange2}
+          style={styles.input}
+        />
+        <TouchableHighlight onPress={this.calcRadius.bind(this)} 
+          style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
-      
       </View>
     );
   }
@@ -66,8 +57,16 @@ class CalculateRadiusOfTurn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
   text: {
     color: 'black',
@@ -88,10 +87,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     borderRadius: 50
   },
-  buttonText: {
-    fontSize: 20,
-    color: 'white'
-  },
-})
+});
 
 export default CalculateRadiusOfTurn;

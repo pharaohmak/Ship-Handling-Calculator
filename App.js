@@ -116,8 +116,7 @@ function AdvanceInTurn({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <CalculateAdvanceInTurn />
 
-    <Button title="Calculate Vector Length" onPress={() => navigation.navigate('AdvanceInTurnSpeed')} />
-
+    <Button title="Calculate Vector Length" onPress={() => navigation.navigate('AdvanceInTurnSpeed')}/>
       
       <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
      
@@ -128,7 +127,6 @@ function AdvanceInTurn({ navigation }) {
 function AdvanceInTurnSpeed ({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <CalculateAdvanceInTurnSpeed />
 
     
     <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />

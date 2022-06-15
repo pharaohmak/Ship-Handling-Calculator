@@ -1,69 +1,60 @@
-import React from 'react';
-import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
-import CalculateAdvanceDistance from './AdvanceInTurn';
-
-/** Input any two variables to get third (all decimals round to tents) */
-
-class CalculateAdvanceInTurnSpeed extends React.Component {
-   
-  
-  advance = CalculateAdvanceDistance;
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { TouchableHighlight } from 'react-native';
+/** 
+class CalculateAdvanceInTurnSpeed extends Component {
 
   constructor(props) {
     super(props);
-  
     this.state = {
-      advance: {CalculateAdvanceDistance},
-      speed: '',
-      vector: 0
+      data: {},
     };
   }
-
-  
-  
-  calculateSum = () => {
-    const { advance, speed } = this.state;
-  
-    this.setState({
-      vector: Number(advance) *  (Math.tan((Number(speed)/2)))
-    });
-    this.ButtonAlert()
-    
+  componentDidMount() {
+    this.fetchUsersAsync();
   }
 
-  ButtonAlert = () => {
-    Alert.alert(
-      "Vector Minutes to Waypoint ",
-      `Advance ${this.state.vector.toFixed(2)} (nm)`,
-      [
-        { text: "OK", onPress: () => console.log((`${this.state.vector }`)) }
-      ]
-    );
-
+  fetchUsersAsync() {
+    const advance =  "./AdvanceInTurn.js";
+    fetch(advance)
+      .then((response) => response.json())
+      .then((list) => this.setState({ data: list }));
   }
-  
+
+  calcWaypoint = function(){
+    var x = (this.state.advance)
+    var y = parseFloat(this.state.speed)
+    var calc = (x * 60) / y
+    this.setState({ waypoint: calc})
+  }
+
   render() {
-    return (
-      <View>
-        <Text style={styles.text}>Advance (nm)</Text>
-        <TextInput
-        style={styles.input}
-          value={this.state.advance}
-          onChangeText={(advance) => this.setState({advance})}
-        />
-
-        <Text style={styles.text}>Speed (kts)</Text>
-        <TextInput
-        style={styles.input}
-
-          value={this.state.speed}
-          onChangeText={(speed) => this.setState({speed})}
-        />
   
-        <TouchableHighlight style={styles.button} onPress={this.calculateSum}>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Advance Distance:  {this.state.data} (nm)
+        </Text>
+
+        <Text style={styles.text}> Radius (nm): </Text>
+        <TextInput
+          value={this.state.radius}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange}
+          style={styles.input}
+        />
+
+        <Text style={styles.text}> Delta (deg): </Text>
+        <TextInput
+          value={this.state.delta}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange2}
+          style={styles.input}
+        />
+        <TouchableHighlight onPress={this.calcAdvance.bind(this)} 
+          style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
-  
       </View>
     );
   }
@@ -72,8 +63,16 @@ class CalculateAdvanceInTurnSpeed extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
   text: {
     color: 'black',
@@ -94,10 +93,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     borderRadius: 50
   },
-  buttonText: {
-    fontSize: 20,
-    color: 'white'
-  },
-})
+});
 
 export default CalculateAdvanceInTurnSpeed;
+
+*/

@@ -1,62 +1,55 @@
-import React from 'react';
-import { View, StyleSheet, TextInput, Text, Alert, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 
-/** Input any two variables to get third (all decimals round to tents) */
+class CalculateSpeedTimeDistance extends Component {
 
-class CalculateSpeedTimeDistance extends React.Component {
-   
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      speed: '',
-      time: '',
-      distance: 0
-    };
+  state = {
+    distance: 0,
+    input: '',
+    speed: '',
+    time: '',
+    calc: 0
   }
-  
-  calculateSum = () => {
-    const { speed, time } = this.state;
-  
-    this.setState({
-      distance: Number(speed) * Number(time)
-    });
-    this.ButtonAlert()
+  onButtonPressed = function() { this.setState({ text:this.state.speed })}
+  _handleTextChange = speed => { this.setState({ speed }); 
+  };
+  _handleTextChange2 = time => { this.setState({ time }); 
+  };
+
+  calcDistance = function() {
+    var x = parseFloat(this.state.speed);
+    var y = parseFloat(this.state.time);
+    var calc = x * y;
+    this.setState({ distance: calc})
   }
 
-  ButtonAlert = () => {
-    Alert.alert(
-      "Speed Time Distance ",
-      `Distance ${this.state.distance.toFixed(2)} (nm)`,
-      [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.distance}`)) }
-      ]
-    );
-
-  }
-  
   render() {
-    return (
-      <View>
-        <Text style={styles.text}>Speed (kts)</Text>
-        <TextInput
-        style={styles.input}
-          value={this.state.speed}
-          onChangeText={(speed) => this.setState({speed})}
-        />
-
-        <Text style={styles.text}>Time (hours)</Text>
-        <TextInput
-        style={styles.input}
-
-          value={this.state.time}
-          onChangeText={(time) => this.setState({time})}
-        />
   
-        <TouchableHighlight style={styles.button} onPress={this.calculateSum}>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Distance:  {this.state.distance.toFixed(2)} (nm)
+        </Text>
+
+        <Text style={styles.text}> Speed (kts): </Text>
+        <TextInput
+          value={this.state.speed}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange}
+          style={styles.input}
+        />
+        <Text style={styles.text}> Time (hours): </Text>
+        <TextInput
+          value={this.state.time}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange2}
+          style={styles.input}
+        />
+        <TouchableHighlight onPress={this.calcDistance.bind(this)} 
+          style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
-  
       </View>
     );
   }
@@ -65,14 +58,21 @@ class CalculateSpeedTimeDistance extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
   text: {
     color: 'black',
     fontSize: 18,
-    padding: 10,
-    
+    padding: 10,   
   },
   input: {
     backgroundColor: 'grey',
@@ -87,10 +87,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     borderRadius: 50
   },
-  buttonText: {
-    fontSize: 20,
-    color: 'white'
-  },
-})
+});
 
 export default CalculateSpeedTimeDistance;

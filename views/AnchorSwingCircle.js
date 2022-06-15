@@ -1,64 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
 import { TouchableHighlight } from 'react-native';
-import { Text, Alert } from 'react-native';
-import { TextInput } from 'react-native';
-import { View, StyleSheet } from 'react-native';
 
+class CalculateAnchorSwingCircle extends Component {
 
-class CalculateAnchorSwingCircle extends React.Component {
-   
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      shackles: '',
-      vessel: '',
-      asc: 0
-    };
-  }
-  
-  calculateSum = () => {
-    const { shackles, vessel } = this.state;
-  
-    this.setState({
-      asc: ((Math.round(Number(shackles)) * 27.5) + Number(vessel))/1852
-    });
-    this.ButtonAlert()
+  state = {
+    sc: 0,
+    input: '',
+    shackles: '',
+    loa: '',
+    calc: 0
   }
 
-  ButtonAlert = () => {
-    Alert.alert(
-      "Anchor Swing Circle ",
-      `Swing Circle ${this.state.asc.toFixed(2)} (nm)`,
-      [
-        { text: "OK", onPress: () => console.log(Math.round(`${this.state.asc}`)) }
-      ]
-    );
+  onButtonPressed = function() { this.setState({ text:this.state.shackles })}
+  _handleTextChange = shackles => { this.setState({ shackles }); 
+  };
+  _handleTextChange2 = loa => { this.setState({ loa }); 
+  };
 
+  calcSwingCircle = function() {
+    var x = parseFloat(this.state.shackles);
+    var y = parseFloat(this.state.loa);
+    var calc = ((x * 27.5) + y) / 1852;
+    this.setState({ sc: calc})
   }
-
-
+    
   render() {
+  
     return (
-      <View>
-        <Text style={styles.text}># Of Shackles (decimal)</Text>
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Swing Circle:  {this.state.sc.toFixed(2)} (nm)
+        </Text>
+
+        <Text style={styles.text}> # Shackles on Deck (decimal): </Text>
         <TextInput
-        style={styles.input}
           value={this.state.shackles}
-          onChangeText={(shackles) => this.setState({shackles})}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange}
+          style={styles.input}
         />
-  
-        <Text style={styles.text}>Vessel LOA (meters)</Text>
+        <Text style={styles.text}> Vessel LOA (meters): </Text>
         <TextInput
-        style={styles.input}
-          value={this.state.vessel}
-          onChangeText={(vessel) => this.setState({vessel})}
+          value={this.state.loa}
+          keyboardType = 'numeric'
+          onChangeText={this._handleTextChange2}
+          style={styles.input}
         />
-  
-        <TouchableHighlight style={styles.button} onPress={this.calculateSum}>
+        <TouchableHighlight onPress={this.calcSwingCircle.bind(this)} 
+          style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
-  
       </View>
     );
   }
@@ -67,14 +59,21 @@ class CalculateAnchorSwingCircle extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
-
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
   },
   text: {
     color: 'black',
     fontSize: 18,
     padding: 10,
-    
   },
   input: {
     backgroundColor: 'grey',
@@ -89,10 +88,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     borderRadius: 50
   },
-  buttonText: {
-    fontSize: 20,
-    color: 'white'
-  },
-})
+});
 
 export default CalculateAnchorSwingCircle;

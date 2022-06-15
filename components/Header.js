@@ -9,7 +9,7 @@ const Header = () => {
 
           <View style={styles.header}>
                 <View style={styles.imageContainer}>
-                    <Image source={require('../assets/placeholderImage.png')}
+                    <Image source={require('../assets/header.jpg')}
                         style={styles.headerImage}/>
                 </View>
                 <View>
@@ -22,20 +22,13 @@ const Header = () => {
 
 const styles = StyleSheet.create ({
     container: {
-        alignContent: 'center'
-    },
-    title: {
-        color: 'black',
-        fontSize: 33,
-        textAlign: 'center',
-        fontWeight: 'bold',
+        alignContent: 'center',
     },
     imageContainer: {
         paddingTop: 25,
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 25
-
     },
     headerImage: {
         width: 350,
