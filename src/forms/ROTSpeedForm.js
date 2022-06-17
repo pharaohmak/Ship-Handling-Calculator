@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native';
-/** 
-class CalculateAdvanceInTurnSpeed extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {},
-    };
+class ROTSpeedForm extends Component {
+  state = {
+    speed: 0,
+    input: '',
+    radius: '',
+    rot: '',
+    calc: 0
   }
-  componentDidMount() {
-    this.fetchUsersAsync();
-  }
+  onButtonPressed = function() { this.setState({ text:this.state.radius })}
+  _handleTextChange = radius => { this.setState({ radius }); 
+  };
+  _handleTextChange2 = rot => { this.setState({ rot }); 
+  };
 
-  fetchUsersAsync() {
-    const advance =  "./AdvanceInTurn.js";
-    fetch(advance)
-      .then((response) => response.json())
-      .then((list) => this.setState({ data: list }));
+  calcRotSpeed = function() {
+    var x = parseFloat(this.state.radius);
+    var y = parseFloat(this.state.rot);
+    var calc = (x * y) / 0.955;
+    this.setState({ speed: calc})
   }
-
-  calcWaypoint = function(){
-    var x = (this.state.advance)
-    var y = parseFloat(this.state.speed)
-    var calc = (x * 60) / y
-    this.setState({ waypoint: calc})
-  }
-
+    
   render() {
   
     return (
-      <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Advance Distance:  {this.state.data} (nm)
+          Speed:  {this.state.speed.toFixed(2)} (kts)
         </Text>
 
         <Text style={styles.text}> Radius (nm): </Text>
@@ -43,19 +39,22 @@ class CalculateAdvanceInTurnSpeed extends Component {
           onChangeText={this._handleTextChange}
           style={styles.input}
         />
-
-        <Text style={styles.text}> Delta (deg): </Text>
+        <Text style={styles.text}> Rate of Turn (dpm): </Text>
         <TextInput
-          value={this.state.delta}
+          value={this.state.rot}
           keyboardType = 'numeric'
           onChangeText={this._handleTextChange2}
           style={styles.input}
         />
-        <TouchableHighlight onPress={this.calcAdvance.bind(this)} 
+        <TouchableHighlight onPress={this.calcRotSpeed.bind(this)} 
           style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
       </View>
+
+      </TouchableWithoutFeedback>
+
+      
     );
   }
 }
@@ -78,7 +77,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18,
     padding: 10,
-    
   },
   input: {
     backgroundColor: 'grey',
@@ -95,6 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalculateAdvanceInTurnSpeed;
-
-*/
+export default ROTSpeedForm;

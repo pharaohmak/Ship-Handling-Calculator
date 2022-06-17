@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TextInput,Alert } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
 import { TouchableHighlight } from 'react-native';
 
-class CalculateRadiusOfTurn extends Component {
+class ROTForm extends Component {
   state = {
-    radius: 0,
+    rot: 0,
     input: '',
     speed: '',
-    rot: '',
+    radius: '',
     calc: 0
   }
-
-  onButtonPressed = function() { this.setState({ radius:this.state.speed })}
+  onButtonPressed = function() { this.setState({ rot:this.state.speed })}
   _handleTextChange = speed => { this.setState({ speed }); 
   };
-  _handleTextChange2 = rot => { this.setState({ rot }); 
+  _handleTextChange2 = radius => { this.setState({ radius }); 
   };
-  calcRadius = function() {
-    var x = parseFloat(this.state.speed) 
-    var y = parseFloat(this.state.rot)
-    var calc = ((0.955) * x) / y;
-    this.setState({ radius: calc})
-  }
 
+  calcRot = function() {
+    var x = parseFloat(this.state.speed);
+    var y = parseFloat(this.state.radius);
+    var calc = ((0.955) * x) / y;
+    this.setState({ rot: calc})
+  }
+    
   render() {
   
     return (
-      <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Radius:  {(this.state.radius).toFixed(2)} (nm)
+          ROT:  {this.state.rot.toFixed(2)} (dpm)
         </Text>
 
         <Text style={styles.text}> Speed (kts): </Text>
@@ -38,18 +40,22 @@ class CalculateRadiusOfTurn extends Component {
           onChangeText={this._handleTextChange}
           style={styles.input}
         />
-        <Text style={styles.text}> Rate Of Turn (dpm): </Text>
+        <Text style={styles.text}> Radius (nm): </Text>
         <TextInput
-          value={this.state.rot}
+          value={this.state.radius}
           keyboardType = 'numeric'
           onChangeText={this._handleTextChange2}
           style={styles.input}
         />
-        <TouchableHighlight onPress={this.calcRadius.bind(this)} 
+        <TouchableHighlight onPress={this.calcRot.bind(this)} 
           style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
       </View>
+
+      </TouchableWithoutFeedback>
+
+      
     );
   }
 }
@@ -72,7 +78,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18,
     padding: 10,
-    
   },
   input: {
     backgroundColor: 'grey',
@@ -89,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalculateRadiusOfTurn;
+export default ROTForm;

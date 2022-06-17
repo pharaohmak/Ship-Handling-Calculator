@@ -1,37 +1,55 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TextInput,Alert } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, TextInput, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native';
+import PropTypes from 'prop-types';
 
-class CalculateAdvanceInTurn extends Component {
+class AdvanceForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            advance: 0,
+            input: '',
+            radius: '',
+            delta: '',
+            calc: 0
+        };
+        this.onButtonPressed = this.onButtonPressed.bind(this);
+        this.calcAdvance = this.calcAdvance.bind(this);
+        this.storeData = this.storeData.bind(this);
+    }
 
-  state = {
-    advance: 0,
-    input: '',
-    radius: '',
-    delta: '',
-    calc: 0
-  }
-  onButtonPressed = function() { this.setState({ text:this.state.radius })}
+
+  onButtonPressed = function() { this.setState({ advance:this.state.radius })}
   _handleTextChange = radius => { this.setState({ radius }); 
   };
   _handleTextChange2 = delta => { this.setState({ delta }); 
   };
 
-  calcAdvance = function() {
+
+  calcAdvance = async function() {
     var x = parseFloat(this.state.radius);
     var y = parseFloat(this.state.delta);
-    var calc = (x) * (Math.tan(Math.tan(y / 2)));
+    var calc = (x) * (Math.tan((Math.tan(y / 2))));
     this.setState({ advance: calc})
-    
+    this.storeData(await this.state.advance)
   }
+  
+  //save the input
+ storeData = async () => {
+    let advance = this.state.advance;
+    await AsyncStorage.setItem('@advance', advance.toString())
+    console.log('Stored Advance: ' + advance)
+}
+        
 
-  
-  render() {
-  
+   render() {
+    const {advance} = this.state;
     return (
-      <View style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Advance Distance:  {this.state.advance.toFixed(2)} (nm)
+          Advance Distance:  { advance.toFixed(2)} (nm)
         </Text>
 
         <Text style={styles.text}> Radius (nm): </Text>
@@ -54,10 +72,14 @@ class CalculateAdvanceInTurn extends Component {
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
       </View>
+
+      </TouchableWithoutFeedback>
+
+      
     );
   }
-}
 
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -93,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalculateAdvanceInTurn;
+export default AdvanceForm;

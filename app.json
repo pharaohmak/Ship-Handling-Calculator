@@ -4,10 +4,10 @@
     "slug": "ShipHandlingCalculator",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/appIcon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.jpg",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -21,15 +21,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "shipHandlingCalculator"
     },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.pharaohmak.ShipHandlingCalculator"
-    },
+   
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     }
   }
 }

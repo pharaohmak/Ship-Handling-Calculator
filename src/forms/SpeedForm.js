@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, TextInput, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native';
 
-class CalculateSpeed extends Component {
+class SpeedForm extends Component {
 
   state = {
     speed: 0,
@@ -27,31 +27,32 @@ class CalculateSpeed extends Component {
   render() {
   
     return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>
-          Speed:  {this.state.speed.toFixed(2)} (kts)
-        </Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.container}>
+          <Text style={styles.paragraph}>
+            Speed:  {this.state.speed.toFixed(2)} (kts)
+          </Text>
 
-        <Text style={styles.text}> Time (hours): </Text>
-        <TextInput
-          value={this.state.time}
-          keyboardType = 'numeric'
-          onChangeText={this._handleTextChange}
-          style={styles.input}
-        />
-
-        <Text style={styles.text}> Distance (nm): </Text>
-        <TextInput
-          value={this.state.distance}
-          keyboardType = 'numeric'
-          onChangeText={this._handleTextChange2}
-          style={styles.input}
-        />
-        <TouchableHighlight onPress={this.calcSpeed.bind(this)} 
-          style={styles.button}>
-          <Text style={styles.buttonText}>Calculate</Text>
-        </TouchableHighlight>
-      </View>
+          <Text style={styles.text}> Time (hours): </Text>
+          <TextInput
+            value={this.state.time}
+            keyboardType = 'numeric'
+            onChangeText={this._handleTextChange}
+            style={styles.input}
+          />
+          <Text style={styles.text}> Distance (nm): </Text>
+          <TextInput
+            value={this.state.distance}
+            keyboardType = 'numeric'
+            onChangeText={this._handleTextChange2}
+            style={styles.input}
+          />
+          <TouchableHighlight onPress={this.calcSpeed.bind(this)} 
+            style={styles.button}>
+            <Text style={styles.buttonText}>Calculate</Text>
+          </TouchableHighlight>
+          </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -91,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalculateSpeed;
+export default SpeedForm;
