@@ -27,11 +27,13 @@ class DistanceForm extends Component {
 
   render() {
   
+    const { distance } = this.state;
+
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <Text style={styles.paragraph}>
-            Distance:  {this.state.distance.toFixed(2)} (nm)
+            Distance:  {distance} (nm)
           </Text>
 
           <Text style={styles.text}> Speed (kts): </Text>

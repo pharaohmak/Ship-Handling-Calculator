@@ -9,12 +9,12 @@ import AdvanceForm from '../forms/AdvanceForm';
 const VectorWaypoint = ({navigation}) => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <WaypointForm />
-      
-      <StatusBar backgroundColor = "#28F1A6" />
+
+      <Button title="Calculate Advanced Distance" onPress={() => navigation.navigate('AdvanceInTurn')} />
       
       <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+
       
-     
     </View> 
     
 );

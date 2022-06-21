@@ -37,7 +37,7 @@ class ROTForm extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
         <Text style={styles.paragraph}>
-          ROT:  { rot } (dpm)
+          ROT:  { rot.toFixed(1) } (dpm)
         </Text>
 
         <Text style={styles.text}> Speed (kts): </Text>

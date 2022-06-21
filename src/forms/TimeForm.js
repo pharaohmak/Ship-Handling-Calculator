@@ -26,12 +26,14 @@ class TimeForm extends Component {
   }
     
   render() {
+
+    const { time } = this.state;
   
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <Text style={styles.paragraph}>
-            Time:  {this.state.time.toFixed(2)} (hours)
+            Time:  {time.toFixed(2)} (hours)
           </Text>
 
           <Text style={styles.text}> Speed (kts): </Text>

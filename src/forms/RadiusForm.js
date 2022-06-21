@@ -25,12 +25,14 @@ class RadiusForm extends Component {
 }
     
   render() {
+
+    const { radius } = this.state;
   
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <Text style={styles.paragraph}>
-            Radius:  {this.state.radius.toFixed(2)} (nm)
+            Radius:  {radius.toFixed(2)} (nm)
           </Text>
 
           <Text style={styles.text}> Speed (kts): </Text>

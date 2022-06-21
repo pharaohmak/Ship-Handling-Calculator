@@ -4,13 +4,13 @@ import { TouchableHighlight } from 'react-native';
 
 class ROTSpeedForm extends Component {
   state = {
-    speed: 0,
+    rotSpeed: 0,
     input: '',
     radius: '',
     rot: '',
     calc: 0
   }
-  onButtonPressed = function() { this.setState({ text:this.state.radius })}
+  onButtonPressed = function() { this.setState({ rotSpeed:this.state.radius })}
   _handleTextChange = radius => { this.setState({ radius }); 
   };
   _handleTextChange2 = rot => { this.setState({ rot }); 
@@ -20,17 +20,19 @@ class ROTSpeedForm extends Component {
     var x = parseFloat(this.state.radius);
     var y = parseFloat(this.state.rot);
     var calc = (x * y) / 0.955;
-    this.setState({ speed: calc})
+    this.setState({ rotSpeed: calc})
     return
   }
     
   render() {
+
+    const { rotSpeed } = this.state;
   
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Speed:  {this.state.speed.toFixed(2)} (kts)
+          Speed:  {rotSpeed.toFixed(1)} (kts)
         </Text>
 
         <Text style={styles.text}> Radius (nm): </Text>

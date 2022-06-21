@@ -15,7 +15,7 @@ const RateOfTurnSpeed = ({navigation}) => (
       />
 
     <Button 
-      title="Go Rate Of Turn" 
+      title="Calculate Rate Of Turn" 
       onPress={() => navigation.navigate('RateOfTurn')} 
       />
 

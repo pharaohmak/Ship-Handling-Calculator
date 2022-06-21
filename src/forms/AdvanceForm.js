@@ -28,13 +28,16 @@ class AdvanceForm extends Component {
 
 
   calcAdvance = async function() {
+  
     var x = parseFloat(this.state.radius);
     var y = parseFloat(this.state.delta);
-    var calc = (x) * (Math.tan((Math.tan(y / 2))));
+    var calc = (x) * (Math.tan((Math.tan((y / 2)))));
     this.setState({ advance: calc})
     this.storeData(await this.state.advance)
     return;
   }
+
+   
   
   //save the input
  storeData = async () => {
@@ -51,7 +54,7 @@ class AdvanceForm extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Advance Distance:  { advance } (nm)
+          Advance Distance:  { advance.toFixed(2) } (nm)
         </Text>
 
         <Text style={styles.text}> Radius (nm): </Text>
@@ -73,6 +76,7 @@ class AdvanceForm extends Component {
           style={styles.button}>
           <Text style={styles.buttonText}>Calculate</Text>
         </TouchableHighlight>
+
       </View>
 
       </TouchableWithoutFeedback>

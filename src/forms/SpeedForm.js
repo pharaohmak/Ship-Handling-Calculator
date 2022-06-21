@@ -27,11 +27,13 @@ class SpeedForm extends Component {
     
   render() {
   
+    const { speed } = this.state;
+
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <Text style={styles.paragraph}>
-            Speed:  {this.state.speed.toFixed(2)} (kts)
+            Speed:  {speed.toFixed(1)} (kts)
           </Text>
 
           <Text style={styles.text}> Time (hours): </Text>
