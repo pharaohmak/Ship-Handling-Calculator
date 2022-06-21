@@ -28,10 +28,13 @@ class AdvanceForm extends Component {
 
 
   calcAdvance = async function() {
-  
+    var pi = Math.PI;
+
     var x = parseFloat(this.state.radius);
-    var y = parseFloat(this.state.delta);
-    var calc = (x) * (Math.tan((Math.tan((y / 2)))));
+    var y = parseFloat((this.state.delta)* ((pi/180)));
+
+
+    var calc = (x) * (Math.tan((y / 2)));
     this.setState({ advance: calc})
     this.storeData(await this.state.advance)
     return;
