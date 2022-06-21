@@ -21,6 +21,7 @@ class RadiusForm extends Component {
     var y = parseFloat(this.state.rot)
     var calc = ((0.955) * x) / y;
     this.setState({ radius: calc})
+    return;
 }
     
   render() {
@@ -29,7 +30,7 @@ class RadiusForm extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
           <Text style={styles.paragraph}>
-            Speed:  {this.state.radius.toFixed(2)} (kts)
+            Radius:  {this.state.radius.toFixed(2)} (nm)
           </Text>
 
           <Text style={styles.text}> Speed (kts): </Text>
@@ -87,8 +88,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default RadiusForm;

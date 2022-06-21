@@ -73,6 +73,11 @@ const styles = StyleSheet.create ({
     buttonGroupContainer: {
       justifyContent: 'space-between',
     },
+    textStyle: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: 'bold'
+    }
     
     
 })

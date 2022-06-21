@@ -13,7 +13,16 @@ const Speed = ({navigation}) => (
       title="Calculate Time"
       onPress={() => navigation.navigate('Time')}
     />
-    <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+
+    <Button
+      title="Calculate Distance"
+      onPress={() => navigation.navigate('Distance')}
+    />
+
+    <Button 
+      title="Go to Home" 
+      onPress={() => navigation.navigate('Home')} 
+    />
 
   </View>
     

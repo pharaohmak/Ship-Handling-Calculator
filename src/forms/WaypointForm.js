@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback, TextInput, Keyboard }
 import { TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 
+
 class WayPointForm extends Component {
     constructor(props) {
         super(props);
@@ -33,6 +34,7 @@ class WayPointForm extends Component {
     var calc = (x * 60) / y
     this.setState({ waypoint: calc})
     this.storeData(await this.state.advance)
+    return
   }
   
   //save the input
@@ -40,6 +42,7 @@ class WayPointForm extends Component {
     let waypoint = this.state.waypoint;
     await AsyncStorage.setItem('@waypoint', waypoint.toString())
     console.log('Stored Waypoint: ' + waypoint)
+    return
 }
         
 
@@ -111,8 +114,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default WayPointForm;

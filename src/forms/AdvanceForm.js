@@ -33,6 +33,7 @@ class AdvanceForm extends Component {
     var calc = (x) * (Math.tan((Math.tan(y / 2))));
     this.setState({ advance: calc})
     this.storeData(await this.state.advance)
+    return;
   }
   
   //save the input
@@ -40,6 +41,7 @@ class AdvanceForm extends Component {
     let advance = this.state.advance;
     await AsyncStorage.setItem('@advance', advance.toString())
     console.log('Stored Advance: ' + advance)
+    return;
 }
         
 
@@ -49,7 +51,7 @@ class AdvanceForm extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={styles.container}>
         <Text style={styles.paragraph}>
-          Advance Distance:  { advance.toFixed(2)} (nm)
+          Advance Distance:  { advance } (nm)
         </Text>
 
         <Text style={styles.text}> Radius (nm): </Text>
@@ -111,8 +113,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default AdvanceForm;

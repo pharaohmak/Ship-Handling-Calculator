@@ -23,6 +23,7 @@ class SwingCircleForm extends Component {
     var y = parseFloat(this.state.loa);
     var calc = ((x * 27.5) + y) / 1852;
     this.setState({ swingCircle: calc})
+    return
   }
     
   render() {
@@ -88,9 +89,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50,
-    width: '100%'
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default SwingCircleForm;

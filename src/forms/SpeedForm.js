@@ -22,6 +22,7 @@ class SpeedForm extends Component {
     var y = parseFloat(this.state.distance);
     var calc = y / x;
     this.setState({ speed: calc})
+    return
   }
     
   render() {
@@ -88,8 +89,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default SpeedForm;

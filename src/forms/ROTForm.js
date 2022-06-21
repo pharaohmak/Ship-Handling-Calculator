@@ -9,12 +9,13 @@ class ROTForm extends Component {
     input: '',
     speed: '',
     radius: '',
-    calc: 0
+    calc: 0,
+    round: 0
   }
   onButtonPressed = function() { this.setState({ rot:this.state.speed })}
-  _handleTextChange = speed => { this.setState({ speed }); 
+  _handleTextChange = speed => { (this.setState({ speed })); 
   };
-  _handleTextChange2 = radius => { this.setState({ radius }); 
+  _handleTextChange2 = radius => { (this.setState({ radius })); 
   };
 
   calcRot = function() {
@@ -22,15 +23,21 @@ class ROTForm extends Component {
     var y = parseFloat(this.state.radius);
     var calc = ((0.955) * x) / y;
     this.setState({ rot: calc})
+    return;
   }
-    
+
+
+
+   
   render() {
   
+    const { rot } = this.state
+
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
         <Text style={styles.paragraph}>
-          ROT:  {this.state.rot.toFixed(2)} (dpm)
+          ROT:  { rot } (dpm)
         </Text>
 
         <Text style={styles.text}> Speed (kts): </Text>
@@ -90,8 +97,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default ROTForm;

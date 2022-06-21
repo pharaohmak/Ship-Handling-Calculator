@@ -13,9 +13,16 @@ const RateOfTurn = ({navigation}) => (
       title="Calculate Radius"
       onPress={() => navigation.navigate('RadiusOfTurn')}
     />
+
+    <Button 
+      title="Go to Speed" 
+      onPress={() => navigation.navigate('RateOfTurnSpeed')} 
+    />
+
     <Button 
     title="Go Home" 
-    onPress={() => navigation.navigate('Home')} />
+    onPress={() => navigation.navigate('Home')} 
+    />
     
   </View>
     

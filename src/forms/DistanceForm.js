@@ -22,6 +22,7 @@ class DistanceForm extends Component {
     var y = parseFloat(this.state.time);
     var calc = x * y;
     this.setState({ distance: calc})
+    return;
   }
 
   render() {
@@ -88,8 +89,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default DistanceForm;

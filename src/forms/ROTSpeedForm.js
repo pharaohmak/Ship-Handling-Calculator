@@ -21,6 +21,7 @@ class ROTSpeedForm extends Component {
     var y = parseFloat(this.state.rot);
     var calc = (x * y) / 0.955;
     this.setState({ speed: calc})
+    return
   }
     
   render() {
@@ -89,8 +90,12 @@ const styles = StyleSheet.create({
     margin: 16,
     alignItems: 'center',
     backgroundColor: 'blue',
-    borderRadius: 50
+    borderRadius: 50, 
+    width: 300
   },
+  buttonText:{
+    color: 'white'
+  }
 });
 
 export default ROTSpeedForm;

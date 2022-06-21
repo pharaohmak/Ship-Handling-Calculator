@@ -7,11 +7,17 @@ import RadiusForm from '../forms/RadiusForm';
 const RadiusOfTurn = ({navigation}) => (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <RadiusForm />
+
+          <Button
+            title="Calculate Rate ofTurn"
+            onPress={() => navigation.navigate('RateOfTurn')}
+          />
           
           <Button
             title="Calculate Speed"
             onPress={() => navigation.navigate('RateOfTurnSpeed')}
           />
+
           <Button 
             title="Go Home" 
             onPress={() => navigation.navigate('Home')} />

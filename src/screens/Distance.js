@@ -10,8 +10,19 @@ const Distance = ({navigation}) => (
 
  
   <Button 
+  title="Calculate Speed" 
+  onPress={() => navigation.navigate('Speed')} 
+  />
+
+<Button 
+  title="Calculate Time" 
+  onPress={() => navigation.navigate('Time')} 
+  />
+
+<Button 
   title="Go Home" 
-  onPress={() => navigation.navigate('Home')} />
+  onPress={() => navigation.navigate('Home')} 
+/>
   
 </View>
     
