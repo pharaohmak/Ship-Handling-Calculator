@@ -1,8 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback, TextInput, Keyboard } from 'react-native';
-import { TouchableHighlight } from 'react-native';
-import PropTypes from 'prop-types';
+import { Text, View, TouchableWithoutFeedback, TextInput, Keyboard, TouchableHighlight } from 'react-native';
+import styles from "./Styles"
 
 class AdvanceForm extends Component {
     constructor(props) {
@@ -39,8 +38,6 @@ class AdvanceForm extends Component {
     this.storeData(await this.state.advance)
     return;
   }
-
-   
   
   //save the input
  storeData = async () => {
@@ -89,43 +86,5 @@ class AdvanceForm extends Component {
   }
 
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#34495e',
-  },
-  text: {
-    color: 'black',
-    fontSize: 18,
-    padding: 10,
-    
-  },
-  input: {
-    backgroundColor: 'grey',
-    width: 300,
-    height: 35,
-    color: 'white'
-  },
-  button: {
-    padding: 18,
-    margin: 16,
-    alignItems: 'center',
-    backgroundColor: 'blue',
-    borderRadius: 50, 
-    width: 300
-  },
-  buttonText:{
-    color: 'white'
-  }
-});
 
 export default AdvanceForm;
