@@ -21,9 +21,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "shipHandlingCalculator"
     },
-   
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
