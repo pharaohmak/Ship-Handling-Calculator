@@ -39,7 +39,7 @@ class RPMForm extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
         <Text style={styles.paragraph}>
-          rpm:  { rpm.toFixed(1) } (dpm)
+          rpm:  { rpm.toFixed(1) } (rpm)
         </Text>
 
         <Text style={styles.text}> Current RPM: </Text>
