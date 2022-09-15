@@ -23,7 +23,7 @@ class RPMForm extends Component {
     var x = parseFloat(this.state.curRpm);
     var y = parseFloat(this.state.curSmg);
     var z = parseFloat(this.state.desSmg);
-    var calc = ((y * z) / x);
+    var calc = ((x * z) / y);
     this.setState({ rpm: calc})
     return
   }
