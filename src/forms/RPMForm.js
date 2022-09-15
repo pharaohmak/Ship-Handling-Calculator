@@ -49,14 +49,14 @@ class RPMForm extends Component {
           onChangeText={this._handleTextChange}
           style={styles.input}
         />
-        <Text style={styles.text}> Current SMG (nm): </Text>
+        <Text style={styles.text}> Current SMG: </Text>
         <TextInput
           value={this.state.curSmg}
           keyboardType = 'numeric'
           onChangeText={this._handleTextChange2}
           style={styles.input}
         />
-         <Text style={styles.text}> Desired SMG (nm): </Text>
+         <Text style={styles.text}> Desired SMG: </Text>
         <TextInput
           value={this.state.desSmg}
           keyboardType = 'numeric'
