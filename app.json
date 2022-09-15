@@ -6,24 +6,30 @@
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./src/assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
+    "android": {
+      "package": "com.pharaohmak.ShipHandlingCalculator"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "shipHandlingCalculator"
+      "bundleIdentifier": "com.pharaohmak.ShipHandlingCalculator"
     },
-    "web": {
-      "favicon": "./src/assets/favicon.png"
-    },
-    "description": ""
-  }
+    "extra": {
+      "eas": {
+        "projectId": "afef5e29-4ae3-49d8-9c6d-8084c87d3d56"
+      }
+    }
+  },
+  "updates": {
+    "fallbackToCacheTimeout": 0
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "shipHandlingCalculator"
+  },
+  "web": {
+    "favicon": "./src/assets/favicon.png"
+  },
+  "description": ""
 }
