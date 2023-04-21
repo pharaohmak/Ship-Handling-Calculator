@@ -2,6 +2,8 @@
 
 This repository contains the source code for an offline mobile app designed to calculate ship handling parameters. The app is built using React Native and Expo, and is intended for use by ship captains, navigators, and other maritime professionals to accurately calculate various handling parameters for ships.
 
+[Try The App](https://expo.dev/@pharaohmak/ShipHandlingCalculator)
+
 ## Features
 
 - Offline functionality: The app is designed to work offline, allowing users to perform calculations even without internet connectivity.
