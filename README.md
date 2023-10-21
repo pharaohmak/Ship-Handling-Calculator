@@ -27,7 +27,7 @@ To set up the ship handling calculator app locally, follow these steps:
 
 1. Clone the repository to your local machine using the following command:
 ```
-git clone https://github.com/your-username/ship-handling-calculator.git
+git clone https://github.com/pharaohmak/ship-handling-calculator.git
 ```
 2. Navigate to the project directory:
 ```
