@@ -4,28 +4,52 @@
   },
   "build": {
     "development": {
-      "developmentClient": true,
+      "developmentClient": false,
       "distribution": "internal",
-      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "development"
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "simulator"
       }
     },
     "preview": {
       "distribution": "internal",
-      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "preview"
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildType": "simulator"
       }
     },
     "production": {
-      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "production"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "buildType": "app-store"
       }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "your-apple-id",
+        "ascAppId": "your-app-store-connect-app-id"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./path/to/your/serviceAccountKey.json",
+        "track": "internal"
+      }
+    }
   }
 }
