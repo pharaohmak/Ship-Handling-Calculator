@@ -6,17 +6,20 @@
     "development": {
       "developmentClient": false,
       "distribution": "internal",
+      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "development"
       }
     },
     "preview": {
       "distribution": "internal",
+      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "preview"
       }
     },
     "production": {
+      "image": "ubuntu-20.04-android-30",
       "env": {
         "ENVIRONMENT": "production"
       }
