@@ -4,13 +4,17 @@
   },
   "build": {
     "development": {
-      "developmentClient": true,
-      "distribution": "internal"
+      "developmentClient": false,
+      "distribution": "internal",
+      "image": "latest"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "image": "latest"
     },
-    "production": {}
+    "production": {
+      "image": "latest"
+    }
   },
   "submit": {
     "production": {}
