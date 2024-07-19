@@ -7,20 +7,22 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "ENVIRONMENT": "development"
+        "ENVIRONMENT": "development",
+        "image": "default"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
-        "ENVIRONMENT": "preview"
+        "ENVIRONMENT": "preview",
+        "image": "default"
       }
     },
     "production": {
       "env": {
-        "ENVIRONMENT": "production"
+        "ENVIRONMENT": "production",
+        "image": "default"
       }
     }
   }
- 
 }
