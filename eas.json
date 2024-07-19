@@ -6,14 +6,20 @@
     "development": {
       "developmentClient": false,
       "distribution": "internal",
-      "image": "latest"
+      "env": {
+        "ENVIRONMENT": "development"
+      }
     },
     "preview": {
       "distribution": "internal",
-      "image": "latest"
+      "env": {
+        "ENVIRONMENT": "preview"
+      }
     },
     "production": {
-      "image": "latest"
+      "env": {
+        "ENVIRONMENT": "production"
+      }
     }
   },
   "submit": {
