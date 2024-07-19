@@ -6,32 +6,26 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "env": {
-        "ENVIRONMENT": "development"
-      }
+      "image": "latest"
     },
     "preview": {
       "distribution": "internal",
-      "env": {
-        "ENVIRONMENT": "preview"
-      }
+      "image": "latest"
     },
     "production": {
-      "env": {
-        "ENVIRONMENT": "production"
-      }
-    }
-  },
-  "submit": {
-    "production": {
-      "ios": {
-        "appleId": "your-apple-id",
-        "ascAppId": "your-app-store-connect-app-id"
-      },
-      "android": {
-        "serviceAccountKeyPath": "./path/to/your/serviceAccountKey.json",
-        "track": "production"
-      }
+      "image": "latest"
     }
   }
+  // "submit": {
+  //   "production": {
+  //     "ios": {
+  //       "appleId": "your-apple-id",
+  //       "ascAppId": "your-app-store-connect-app-id"
+  //     },
+  //     "android": {
+  //       "serviceAccountKeyPath": "./path/to/your/serviceAccountKey.json",
+  //       "track": "production"
+  //     }
+  //   }
+  // }
 }
