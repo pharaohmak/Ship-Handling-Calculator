@@ -4,39 +4,21 @@
   },
   "build": {
     "development": {
-      "developmentClient": false,
+      "developmentClient": true,
       "distribution": "internal",
       "env": {
         "ENVIRONMENT": "development"
-      },
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "buildType": "simulator"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
         "ENVIRONMENT": "preview"
-      },
-      "android": {
-        "buildType": "apk"
-      },
-      "ios": {
-        "buildType": "simulator"
       }
     },
     "production": {
       "env": {
         "ENVIRONMENT": "production"
-      },
-      "android": {
-        "buildType": "app-bundle"
-      },
-      "ios": {
-        "buildType": "app-store"
       }
     }
   }
