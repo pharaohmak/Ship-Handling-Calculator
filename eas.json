@@ -39,17 +39,6 @@
         "buildType": "app-store"
       }
     }
-  },
-  "submit": {
-    "production": {
-      "ios": {
-        "appleId": "your-apple-id",
-        "ascAppId": "your-app-store-connect-app-id"
-      },
-      "android": {
-        "serviceAccountKeyPath": "./path/to/your/serviceAccountKey.json",
-        "track": "internal"
-      }
-    }
   }
+ 
 }
