@@ -1,37 +1,21 @@
 {
   "cli": {
-    "version": ">= 0.52.0"
+    "version": ">= 2.1.0"
   },
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "env": {
-        "ENVIRONMENT": "development"
-      }
+      "distribution": "internal"
     },
     "preview": {
       "distribution": "internal",
-      "env": {
-        "ENVIRONMENT": "preview"
-      }
+      "channel": "preview"
     },
     "production": {
-      "env": {
-        "ENVIRONMENT": "production"
-      }
+      "channel": "production"
     }
   },
   "submit": {
-    "production": {
-      "ios": {
-        "appleId": "your-apple-id",
-        "ascAppId": "your-app-store-connect-app-id"
-      },
-      "android": {
-        "serviceAccountKeyPath": "./path/to/your/serviceAccountKey.json",
-        "track": "production"
-      }
-    }
+    "production": {}
   }
 }

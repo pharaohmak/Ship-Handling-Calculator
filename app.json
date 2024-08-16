@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ShipHandlingCalculator",
-    "slug": "ShipHandlingCalculator",
+    "slug": "ship-handling",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -14,8 +14,15 @@
     },
     "extra": {
       "eas": {
-        "projectId": "db40a8c6-76c1-4e94-90ae-5d96dc7dd523"
+        "projectId": "584a2668-0dbf-4052-9ff1-c4d458ed5eb8"
       }
+    },
+    "owner": "pharaohmak",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/584a2668-0dbf-4052-9ff1-c4d458ed5eb8"
     }
   },
   "updates": {
