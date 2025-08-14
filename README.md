@@ -2,8 +2,6 @@
 
 An offline-first mobile app for maritime professionals to calculate key ship handling parameters with precision. Designed for **ship captains, navigators**, and marine engineers, this app enables accurate calculations without needing internet connectivity.
 
-![Preview Screenshot](preview.png) <!-- Optional: Replace with actual preview if available -->
-
 ---
 
 ## 🚀 Features
